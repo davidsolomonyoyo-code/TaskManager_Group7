@@ -49,6 +49,7 @@ function renderTasks() {
 
         taskList.appendChild(li);
     });
+<<<<<<< HEAD
     // 56. Sort tasks by due date (nearest first)
 function sortByDate() {
     tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -65,4 +66,67 @@ document.getElementById('sortDateBtn').addEventListener('click', sortByDate);
 document.getElementById('sortPriorityBtn').addEventListener('click', sortByPriority);
 
 
+=======
+
+
+    // Shared task array
+let tasks = [];
+
+// Load tasks when page starts
+window.onload = function () {
+    tasks = loadTasks() || [];
+    renderTasks();
+};
+
+// ADD TASK FUNCTION
+function addTask() {
+    // Read values from inputs
+    const titleInput = document.getElementById("title");
+    const priorityInput = document.getElementById("priority");
+    const dateInput = document.getElementById("date");
+
+    const title = titleInput.value.trim();
+    const priority = priorityInput.value;
+    const date = dateInput.value;
+
+    // Validation
+    if (title === "") {
+        alert("Title cannot be empty!");
+        return;
+    }
+
+    // Create task object
+    const task = {
+        id: Date.now(), // unique ID
+        title: title,
+        priority: priority,
+        date: date
+    };
+
+    // Add to tasks array
+    tasks.push(task);
+
+    // Save and render
+    saveTasks(tasks);
+    renderTasks();
+
+    // Clear form
+    titleInput.value = "";
+    priorityInput.value = "";
+    dateInput.value = "";
+}
+
+// DELETE TASK FUNCTION
+function deleteTask(id) {
+    // Remove task with matching ID
+    tasks = tasks.filter(task => task.id !== id);
+
+    // Save and re-render
+    saveTasks(tasks);
+    renderTasks();
+}
+
+// CONNECT BUTTON
+document.getElementById("addBtn").addEventListener("click", addTask);
+>>>>>>> 2abd116475453ca4008bb9e20731267cedb19b62
 }
