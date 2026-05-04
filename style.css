@@ -1,0 +1,174 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+}
+
+/* Sections as Cards */
+section {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+section {
+  transition: 0.2s ease;
+}
+/*card hover*/
+section:hover {
+  transform: translateY(-2px);
+}
+
+/* Form */
+#taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Inputs */
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #667eea;
+}
+
+/* Buttons */
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5a67d8;
+}
+
+/* Sort buttons */
+#sortSection {
+  display: flex;
+  gap: 10px;
+}
+
+#sortSection button {
+  flex: 1;
+}
+
+/* Task List */
+#taskList {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Task Item */
+.task-item {
+  background: #f4f6fb;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+/* Hover */
+.task-item:hover {
+  transform: scale(1.02);
+}
+section:hover {
+  transform: translateY(-2px);
+}
+
+/* Priority Colors */
+.High {
+  border-left: 5px solid #ff4d4d;
+}
+
+.Medium {
+  border-left: 5px solid #ffa500;
+}
+
+.Low {
+  border-left: 5px solid #28a745;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* Action Buttons */
+.actions button {
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+button:active {
+  transform: scale(0.97);
+}
+
+/* Delete Button Override */
+.actions button:last-child {
+  background: #ff4d4d;
+}
+
+.actions button:last-child:hover {
+  background: #e60000;
+}
+
+/* Dragging Effect */
+.dragging {
+  opacity: 0.5;
+  transform: scale(1.05);
+}
+
+/* Scrollbar */
+#taskList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#taskList::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
