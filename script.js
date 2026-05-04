@@ -49,4 +49,20 @@ function renderTasks() {
 
         taskList.appendChild(li);
     });
+    // 56. Sort tasks by due date (nearest first)
+function sortByDate() {
+    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+    renderTasks(); // 58. Re-render immediately
+}
+
+//  Sort tasks by priority (High → Medium → Low)
+function sortByPriority() {
+    const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+    tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    renderTasks(); //  Re-render immediately
+}
+document.getElementById('sortDateBtn').addEventListener('click', sortByDate);
+document.getElementById('sortPriorityBtn').addEventListener('click', sortByPriority);
+
+
 }
