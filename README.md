@@ -25,7 +25,7 @@ style.css   - Contains all the styling and visual design for the app, including 
 script.js   - Contains all the JavaScript logic that powers the app, including adding, editing, deleting, sorting, and saving tasks using CRUD operations and localStorage.
 
 ----------------------------------------
-APP FEATURES
+    APP FEATURES
 ----------------------------------------
 
 - Add a new task with a title, priority level, and due date
@@ -35,6 +35,7 @@ APP FEATURES
 - Sort tasks automatically by due date or priority
 - Data is saved to the browser so tasks survive a page refresh
 - No login or installation required — runs entirely in the browser
+
 
 
 
