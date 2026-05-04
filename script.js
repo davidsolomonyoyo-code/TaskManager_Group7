@@ -1,3 +1,20 @@
+//===== RENDER FUNCTION
+function renderTasks() {
+  var list = document.getElementById('taskListSection');
+  list.innerHTML = '';
+  for (var i = 0; i < tasks.length; i++) {
+    var task = tasks[i];
+    var card = document.createElement('div');
+    card.className = 'task-card';
+    card.innerHTML = '<strong>' + task.title + '</strong>' +
+      '<span class="badge ' + task.priority.toLowerCase() + '">' + task.priority + '</span>' +
+      '<p>Due: ' + task.date + '</p>' +
+      '<button onclick="editTask(' + task.id + ')">Edit</button>' +
+      '<button onclick="deleteTask(' + task.id + ')">Delete</button>';
+    makeDraggable(card, i);
+    list.appendChild(card);
+  }
+}
 // DRAG & DROP 
 function renderTasks() {
     taskList.innerHTML = '';
@@ -49,6 +66,24 @@ function renderTasks() {
 
         taskList.appendChild(li);
     });
+<<<<<<< HEAD
+    // 56. Sort tasks by due date (nearest first)
+function sortByDate() {
+    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+    renderTasks(); // 58. Re-render immediately
+}
+
+//  Sort tasks by priority (High → Medium → Low)
+function sortByPriority() {
+    const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+    tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    renderTasks(); //  Re-render immediately
+}
+document.getElementById('sortDateBtn').addEventListener('click', sortByDate);
+document.getElementById('sortPriorityBtn').addEventListener('click', sortByPriority);
+
+
+=======
 
 
     // Shared task array
@@ -110,4 +145,5 @@ function deleteTask(id) {
 
 // CONNECT BUTTON
 document.getElementById("addBtn").addEventListener("click", addTask);
+>>>>>>> 2abd116475453ca4008bb9e20731267cedb19b62
 }
