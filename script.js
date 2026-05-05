@@ -121,59 +121,38 @@ document.getElementById('sortDateBtn').addEventListener('click', sortByDate);
 document.getElementById('sortPriorityBtn').addEventListener('click', 
     sortByPriority);
 
-// DRAG & DROP 
-function renderTasks() {
-    taskList.innerHTML = '';
+// ===== PERSON 8: DRAG & DROP — Ronoh Morgan =====
 
-    tasks.forEach((task, index) => {
-        const li = document.createElement('li');
-        li.className = `task-item ${task.priority}`;
-        li.setAttribute('draggable', 'true');
-        li.setAttribute('data-index', index);
+var draggedIndex = null;
 
-        li.innerHTML = `
-            <div>
-                <strong>${task.title}</strong><br>
-                <small>${task.date} | ${task.priority}</small>
-            </div>
-            <div class="actions">
-                <button onclick="editTask(${task.id})">Edit</button>
-                <button onclick="deleteTask(${task.id})" style="color:red">Delete</button>
-            </div>
-        `;
+function makeDraggable(cardElement, index) {
+  cardElement.setAttribute('draggable', true);
+  cardElement.addEventListener('dragstart', function() {
+    draggedIndex = index;
+    cardElement.style.opacity = '0.5';
+  });
+  cardElement.addEventListener('dragend', function() {
+    cardElement.style.opacity = '1';
+  });
+  cardElement.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    cardElement.style.borderTop = '3px solid #2563EB';
+  });
+  cardElement.addEventListener('dragleave', function() {
+    cardElement.style.borderTop = '';
+  });
+  cardElement.addEventListener('drop', function() {
+    cardElement.style.borderTop = '';
+    if (draggedIndex === null || draggedIndex === index) return;
+    var moved = tasks.splice(draggedIndex, 1)[0];
+    tasks.splice(index, 0, moved);
+    draggedIndex = null;
+    saveTasks();
+    renderTasks();
+  });
+}
 
-        //          DRAG AND DROP EVENT LISTENERS
-        
-        //start dragging
-        li.addEventListener('dragstart', () => {
-            draggedItemIndex = index;
-            li.classList.add('dragging');
-        });
 
-        //Allow item to be dropped over this element
-
-        li.addEventListener('dragover', (e) => {
-            e.preventDefault(); // Necessary to allow drop
-        });
-
-        //handles the drop
-        li.addEventListener('drop', () => {
-            // Reorder the array based on where the item was dropped
-            const movedItem = tasks.splice(draggedItemIndex, 1)[0];
-            tasks.splice(index, 0, movedItem);
-            
-            save
-            saveTasks();
-            renderTasks(); // Save the new order permanently
-        });
-
-        //Clean up visual state
-        li.addEventListener('dragend', () => {
-            li.classList.remove('dragging');
-        });
-
-        taskList.appendChild(li);
-    });
    // CONNECT BUTTON
 document.getElementById("addBtn").addEventListener("click", addTask);
 } 
