@@ -9,48 +9,86 @@
 <body>
     <!-- Page Heading -->
     <header>
-            <h1>Taskify</h1>
-            <p class="subtitle">Stay organized. Stay productive.</p>
+        <h1>Taskify</h1>
+        <p class="subtitle">Stay organized. Stay productive.</p>
     </header>
-    <!-- Task Input Form -->
-    <section id="taskFormSection">
-        <form id="taskForm">
-            <!-- Task Title -->
-            <input 
-                type="text" 
-                id="taskInput" 
-                placeholder="Enter task title" 
-                required
-            >
-            <!-- Priority Dropdown -->
-            <select id="prioritySelect">
-                <option value="High">High</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="Low">Low</option>
-            </select>
-            <!-- Due Date -->
-            <input 
-                type="date" 
-                id="dateInput"
-            >
-            <!-- Add Task Button -->
-            <button type="submit" id="addTaskBtn">
-                Add Task
-            </button>
+    
+    <div class="container">
+        <!-- Task Input Form -->
+        <section id="taskFormSection" class="form-card">
+            <h2>Create New Task</h2>
+            <form id="taskForm">
+                <!-- Task Title -->
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="Enter task title" 
+                    required
+                >
+                <!-- Priority Dropdown -->
+                <select id="prioritySelect">
+                    <option value="High">High Priority</option>
+                    <option value="Medium" selected>Medium Priority</option>
+                    <option value="Low">Low Priority</option>
+                </select>
+                <!-- Due Date -->
+                <input 
+                    type="date" 
+                    id="dateInput"
+                >
+                <!-- Add Task Button -->
+                <button type="submit" id="addTaskBtn">
+                    Add Task
+                </button>
+            </form>  
+        </section>
 
-        </form>  
-    </section>
-    <!-- Sorting Buttons -->
-    <section id="sortSection">
-        <button id="sortDateBtn">Sort by Date</button>
-        <button id="sortPriorityBtn">Sort by Priority</button>
-    </section>
+        <!-- Sorting Buttons -->
+        <section id="sortSection" class="sort-card">
+            <button id="sortDateBtn">Sort by Date</button>
+            <button id="sortPriorityBtn">Sort by Priority</button>
+        </section>
+
         <!-- Task List Display Area -->
-    <section id="taskListSection">
-        <ul id="taskList">
-            <!-- Tasks will be dynamically inserted here -->
-        </ul>
-    </section>
+        <section id="taskListSection" class="tasks-section">
+            <h2>Tasks</h2>
+            <div id="taskList">
+                <!-- Tasks will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Edit Task Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editTitle">Task Title:</label>
+                    <input type="text" id="editTitle" placeholder="Task title">
+                </div>
+                <div class="form-group">
+                    <label for="editPriority">Priority:</label>
+                    <select id="editPriority">
+                        <option value="High">High Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="Low">Low Priority</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editDate">Due Date:</label>
+                    <input type="date" id="editDate">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveEditBtn" class="btn-save">Save Changes</button>
+                <button id="cancelEditBtn" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
     
     <script src="script.js"></script>
 
