@@ -121,7 +121,7 @@ document.getElementById('sortDateBtn').addEventListener('click', sortByDate);
 document.getElementById('sortPriorityBtn').addEventListener('click', 
     sortByPriority);
 
-// ===== PERSON 8: DRAG & DROP — Ronoh Morgan =====
+// DRAG & DROP — Ronoh Morgan 
 
 var draggedIndex = null;
 
