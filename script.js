@@ -41,63 +41,44 @@ function renderTasks() {
     list.appendChild(card);
   }
 }
-// DRAG & DROP 
-function renderTasks() {
-    taskList.innerHTML = '';
 
-    tasks.forEach((task, index) => {
-        const li = document.createElement('li');
-        li.className = `task-item ${task.priority}`;
-        li.setAttribute('draggable', 'true');
-        li.setAttribute('data-index', index);
 
-        li.innerHTML = `
-            <div>
-                <strong>${task.title}</strong><br>
-                <small>${task.date} | ${task.priority}</small>
-            </div>
-            <div class="actions">
-                <button onclick="editTask(${task.id})">Edit</button>
-                <button onclick="deleteTask(${task.id})" style="color:red">Delete</button>
-            </div>
-        `;
 
-        //          DRAG AND DROP EVENT LISTENERS
-        
-        //start dragging
-        li.addEventListener('dragstart', () => {
-            draggedItemIndex = index;
-            li.classList.add('dragging');
-        });
 
-        //Allow item to be dropped over this element
 
-        li.addEventListener('dragover', (e) => {
-            e.preventDefault(); // Necessary to allow drop
-        });
+//  PERSON 8: DRAG & DROP — Ronoh Morgan 
 
-        //handles the drop
-        li.addEventListener('drop', () => {
-            // Reorder the array based on where the item was dropped
-            const movedItem = tasks.splice(draggedItemIndex, 1)[0];
-            tasks.splice(index, 0, movedItem);
-            
-            saveAndRender(); // Save the new order permanently
-        });
+var draggedIndex = null;
 
-        //Clean up visual state
-        li.addEventListener('dragend', () => {
-            li.classList.remove('dragging');
-        });
-
-        taskList.appendChild(li);
-    });
-<<<<<<< HEAD
-    // 56. Sort tasks by due date (nearest first)
-function sortByDate() {
-    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-    renderTasks(); // 58. Re-render immediately
+function makeDraggable(cardElement, index) {
+  cardElement.setAttribute('draggable', true);
+  cardElement.addEventListener('dragstart', function() {
+    draggedIndex = index;
+    cardElement.style.opacity = '0.5';
+  });
+  cardElement.addEventListener('dragend', function() {
+    cardElement.style.opacity = '1';
+  });
+  cardElement.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    cardElement.style.borderTop = '3px solid #2563EB';
+  });
+  cardElement.addEventListener('dragleave', function() {
+    cardElement.style.borderTop = '';
+  });
+  cardElement.addEventListener('drop', function() {
+    cardElement.style.borderTop = '';
+    if (draggedIndex === null || draggedIndex === index) return;
+    var moved = tasks.splice(draggedIndex, 1)[0];
+    tasks.splice(index, 0, moved);
+    draggedIndex = null;
+    saveTasks();
+    renderTasks();
+  });
 }
+
+
+
 
 //  Sort tasks by priority (High → Medium → Low)
 function sortByPriority() {
