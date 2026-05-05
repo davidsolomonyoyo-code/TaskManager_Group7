@@ -42,11 +42,16 @@ function renderTasks() {
   }
 }
 // ADD TASK FUNCTION
-function addTask() {
+function addTask(event) {
+    // Prevent form submission default behavior
+    if (event) {
+        event.preventDefault();
+    }
+    
     // Read values from inputs
-    const titleInput = document.getElementById("title");
-    const priorityInput = document.getElementById("priority");
-    const dateInput = document.getElementById("date");
+    const titleInput = document.getElementById("taskInput");
+    const priorityInput = document.getElementById("prioritySelect");
+    const dateInput = document.getElementById("dateInput");
 
     const title = titleInput.value.trim();
     const priority = priorityInput.value;
@@ -70,12 +75,12 @@ function addTask() {
     tasks.push(task);
 
     // Save and render
-    saveTasks(tasks);
+    saveTasks();
     renderTasks();
 
     // Clear form
     titleInput.value = "";
-    priorityInput.value = "";
+    priorityInput.value = "Medium";
     dateInput.value = "";
 }
 
@@ -154,6 +159,6 @@ function makeDraggable(cardElement, index) {
 
 
    // CONNECT BUTTON
-document.getElementById("addBtn").addEventListener("click", addTask);
-} 
+document.getElementById("addTaskBtn").addEventListener("click", addTask);
+document.getElementById("taskForm").addEventListener("submit", addTask);
 loadTasks();
