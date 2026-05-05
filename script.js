@@ -1,3 +1,29 @@
+//Task array declaration
+let tasks = [];
+let draggedItemIndex = null;
+
+// Load tasks from LocalStorage immediately when script runs
+const savedData = localStorage.getItem('myTasks');
+if (savedData) {
+    tasks = JSON.parse(savedData);
+}
+
+// Function to save current state to LocalStorage
+function saveTasks() {
+    localStorage.setItem('myTasks', JSON.stringify(tasks));
+}
+function loadTasks() {
+    const savedData = localStorage.getItem('myTasks');
+
+    if (savedData) {
+        // Convert the string back into a JavaScript array
+        tasks = JSON.parse(savedData);
+        renderTasks(); // Call your function that draws the cards on the screen
+    } else {
+        tasks = []; // Start fresh if nothing is saved
+    }
+}
+
 //===== RENDER FUNCTION
 function renderTasks() {
   var list = document.getElementById('taskListSection');
