@@ -147,3 +147,19 @@ function deleteTask(id) {
 document.getElementById("addBtn").addEventListener("click", addTask);
 >>>>>>> 2abd116475453ca4008bb9e20731267cedb19b62
 }
+function editTask(id) {
+  var task = tasks.find(function(t) { return t.id === id; });
+  if (!task) return;
+  var newTitle = prompt('Edit task title:', task.title);
+  if (newTitle === null) return;
+  if (newTitle.trim() === '') newTitle = task.title;
+  var newPriority = prompt('Edit priority (High / Medium / Low):', task.priority);
+  if (newPriority === null) return;
+  var newDate = prompt('Edit due date (YYYY-MM-DD):', task.date);
+  if (newDate === null) return;
+  task.title = newTitle;
+  task.priority = newPriority;
+  task.date = newDate;
+  saveTasks();
+  renderTasks();
+}
