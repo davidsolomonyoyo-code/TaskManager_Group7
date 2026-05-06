@@ -36,7 +36,22 @@ script.js   - Contains all the JavaScript logic that powers the app, including a
 - Data is saved to the browser so tasks survive a page refresh
 - No login or installation required — runs entirely in the browser
 
-
+-----------------------------------------
+GROUP MEMBERS
+-----------------------------------------
+CIT-223-089/2022 – David Osoro
+CIT-223-041/2022 – Ronoh Morgan
+CIT-223-099/2022 – Georgina Imbuga
+CIT-223-120/2022 – Elvis Mwirigi
+CIT-223-031/2022 – Fred Mwenda
+CIT-223-023/2022 – Charlene Sheldene
+CIT-223-050/2022 – Theuri Maxwell
+CIT-223-091/2022 – Clinton Oduor
+CIT-223-061/2022 – Josiah Gatheru
+CIT-223-049/2022 – Stephanie Kasina
+CIT-223-088/2022 – Brian Ochieng
+CIT-223-002/2022 – Samuel Wangurue
+CIT-223-056/2022 – Brian Kipchumba
 
 
 
